@@ -211,14 +211,13 @@ var margin = { top: 50, right: 0, bottom: 100, left: 50 },
           buckets = 9,
           colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"],
           table_ls = ["part", "supplier", "partsupp", "customer", "nation", "region", "lineitem", "orders"],
-	  query_ls = ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12", "Q13", "Q14"]
+          query_ls = ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12", "Q13", "Q14"];
 	  /*//single fn_list
 	  datasets = ["idx_none.tsv", "idx_ppartkey.tsv", "idx_pmfgr.tsv", "idx_psize.tsv", "idx_ptype.tsv", "idx_ssuppkey.tsv", "idx_snationkey.tsv", "idx_sacctbal.tsv", "idx_sname.tsv", "idx_pspartkey.tsv", "idx_pssuppkey.tsv", "idx_pssupplycost.tsv", "idx_cmktsegment.tsv", "idx_ccustkey.tsv", "idx_cnationkey.tsv", "idx_cname.tsv", "idx_cacctbal.tsv", "idx_cphone.tsv", "idx_caddress.tsv", "idx_ccomment.tsv", "idx_nnationkey.tsv", "idx_nregionkey.tsv", "idx_nname.tsv", "idx_rregionkey.tsv", "idx_rname.tsv", "idx_lshipdate.tsv", "idx_lreturnflag.tsv", "idx_llinestatus.tsv", "idx_lorderkey.tsv", "idx_lcommitdate.tsv", "idx_lreceiptdate.tsv", "idx_lsuppkey.tsv", "idx_ldiscount.tsv", "idx_lquantity.tsv", "idx_lshipmode.tsv", "idx_lpartkey.tsv", "idx_ocustkey.tsv", "idx_oorderkey.tsv", "idx_oorderdate.tsv", "idx_oshippriority.tsv", "idx_oorderpriority.tsv", "idx_avg.tsv"];*/
 	  //double fn_list
-	  datasets = ["idx_p_partkey_o_custkey.tsv", "idx_p_partkey_p_size.tsv", "idx_p_mfgr_ps_suppkey.tsv", "idx_p_mfgr_s_suppkey.tsv", "idx_p_mfgr_ps_supplycost.tsv", "idx_p_partkey_l_partkey.tsv", "idx_p_mfgr_p_type.tsv", "idx_p_partkey_o_shippriority.tsv", "idx_p_partkey_c_acctbal.tsv", "idx_p_mfgr_p_partkey.tsv", "idx_p_mfgr_s_nationkey.tsv", "idx_p_partkey_l_linestatus.tsv", "idx_p_partkey_s_nationkey.tsv", "idx_p_partkey_n_nationkey.tsv", "idx_p_mfgr_c_mktsegment.tsv", "idx_p_partkey_l_shipmode.tsv", "idx_p_partkey_c_comment.tsv", "idx_p_partkey_p_type.tsv", "idx_p_partkey_l_suppkey.tsv", "idx_p_partkey_c_name.tsv", "idx_p_partkey_l_commitdate.tsv", "idx_p_partkey_c_nationkey.tsv", "idx_p_mfgr_c_custkey.tsv", "idx_p_partkey_o_orderkey.tsv", "idx_p_mfgr_ps_partkey.tsv", "idx_p_mfgr_s_name.tsv", "idx_p_partkey_o_orderdate.tsv", "idx_p_partkey_ps_supplycost.tsv", "idx_p_partkey_l_quantity.tsv", "idx_p_partkey_c_address.tsv", "idx_p_partkey_p_mfgr.tsv", "idx_p_partkey_l_discount.tsv", "idx_p_partkey_s_suppkey.tsv", "idx_p_partkey_l_returnflag.tsv", "idx_p_partkey_r_regionkey.tsv", "idx_p_mfgr_p_size.tsv", "idx_p_partkey_c_custkey.tsv", "idx_p_partkey_l_shipdate.tsv", "idx_p_partkey_r_name.tsv", "idx_p_partkey_s_name.tsv", "idx_p_partkey_n_name.tsv", "idx_p_mfgr_s_acctbal.tsv", "idx_p_partkey_o_orderpriority.tsv", "idx_p_partkey_s_acctbal.tsv", "idx_p_partkey_ps_suppkey.tsv", "idx_p_mfgr_c_nationkey.tsv", "idx_p_partkey_c_phone.tsv", "idx_p_partkey_ps_partkey.tsv", "idx_p_partkey_n_regionkey.tsv", "idx_p_partkey_c_mktsegment.tsv", "idx_p_partkey_l_orderkey.tsv", "idx_p_partkey_l_receiptdate.tsv", "idx_avg.tsv"];
-	  //DATASETS_SZ = 42;	//single
-	  DATASETS_SZ = 53;
-	  datasets_idx_map = [[0, 0], [1, 1], [2, 2], [4, 3], [8, 4], [16, 5], [32, 6], [64, 7], [128, 8], [256, 9], [512, 10], [1024, 11], [2048, 12], [4096, 13], [8192, 14], [16348, 15], [32768, 16], [65536, 17], [131072, 18], [262144, 19], [524288, 20], [1048576, 21], [2097152, 22], [4194304, 23], [8388608, 24], [16777216, 25], [33554432, 26], [67108864, 27], [134217728, 28], [268435456, 29], [536870912, 30], [1073741824, 31], [2147483648, 32], [4294967296, 33], [8589934592, 34], [17179869184, 35], [34359738368, 36], [68719476736, 37], [137438953472, 38], [274877906944, 39], [549755813888, 40], [1099511627776, 41]]; //{binary set (by sum), index in datasets[]}
+var datasets, DATASETS_SZ, INDEX_AVG;
+
+var datasets_idx_map = [[0, 0], [1, 1], [2, 2], [4, 3], [8, 4], [16, 5], [32, 6], [64, 7], [128, 8], [256, 9], [512, 10], [1024, 11], [2048, 12], [4096, 13], [8192, 14], [16348, 15], [32768, 16], [65536, 17], [131072, 18], [262144, 19], [524288, 20], [1048576, 21], [2097152, 22], [4194304, 23], [8388608, 24], [16777216, 25], [33554432, 26], [67108864, 27], [134217728, 28], [268435456, 29], [536870912, 30], [1073741824, 31], [2147483648, 32], [4294967296, 33], [8589934592, 34], [17179869184, 35], [34359738368, 36], [68719476736, 37], [137438953472, 38], [274877906944, 39], [549755813888, 40], [1099511627776, 41]]; //{binary set (by sum), index in datasets[]}
 
 //====================================begin==============================================		  
 /*var svg = d3.select("#heatmap").append("svg")
@@ -270,12 +269,12 @@ var colorScale = d3.scale.quantile()
 
 function indexClicked(col, curr_idx)
 {
-	console.log(curr_idx);
-	console.log(col.idx_id);
+	// console.log(curr_idx);
+	// console.log(col.idx_id);
 	var new_idx = curr_idx + col.idx_id;
 	var map_idx = -1;
 	
-	for (i = 0; i < DATASETS_SZ; ++i)
+	for (var i = 0; i < DATASETS_SZ; ++i)
 	{
 		if (datasets_idx_map[i][0] == new_idx)
 			map_idx = datasets_idx_map[i][1];
@@ -289,9 +288,9 @@ function indexClicked(col, curr_idx)
 
 function cardClicked(entry, curr_idx)
 {
-	console.log(curr_idx);
-	console.log(entry.table);
-	console.log(entry.query);
+	// console.log(curr_idx);
+	// console.log(entry.table);
+	// console.log(entry.query);
 	var table_idx = entry.table - 1;
 	var query_idx = entry.query - 1;
 	
@@ -343,277 +342,176 @@ function cardClicked(entry, curr_idx)
 
 //.tsv format: table	query	scan_step_num      
 var heatmapChart = function(curr_idx, map_idx) {
-	var tsvFile = datasets[map_idx];
+    var tsvFile = datasets[map_idx];
+    var data = datasets_table[tsvFile];
+
+    var colorScale = d3.scale.quantile()
+            .domain([0, buckets - 1, d3.max(data, function (d) { return d.scanstep; })])
+            .range(colors);
+
+    var cards = svg.selectAll(".query")
+            .data(data, function(d) {return d.table+':'+d.query;});
+
+    cards.append("title");
+
+    cards.enter().append("rect")
+        .attr("x", function(d) { return (d.query - 1) * gridSize; })
+        .attr("y", function(d) { return (d.table - 1) * gridSize; })
+        .attr("rx", 4)
+        .attr("ry", 4)
+        .attr("class", "query bordered")
+        .attr("width", gridSize)
+        .attr("height", gridSize)
+        .style("fill", colors[0])
+        .attr("transform", "translate(" + X_OFFSET + ", " + Y_OFFSET + ")");
+
+    cards.transition().duration(1000)
+        .style("fill", function(d) { return colorScale(d.scanstep); });
+
+    cards.select("title").text(function(d) { return d.scanstep; });
+    
+    //-----------------------------
+    cards.on("click", function(d) {cardClicked(d, curr_idx); });
+    //-----------------------------
+    
+    cards.exit().remove();
+    
+    //------------------------------
+    var curr_idx_tab = d3.select("#current_idx");
+    var c_thead = curr_idx_tab.selectAll("thead");
+    var c_tbody = curr_idx_tab.selectAll("tbody");
+    c_thead.selectAll("tr").remove();
+    c_tbody.selectAll("td").remove();
+
+    c_thead = curr_idx_tab.append("thead");
+    c_tbody = curr_idx_tab.append("tbody");
+    c_thead.append("tr")
+	.append("th")
+	.text("Current Index");
+    
+    // console.log(curr_idx);
+    // console.log(find_set[2].idx_id);
+    // console.log(find_set[2].idx_id & curr_idx);
+    if (curr_idx == 0)
+    {
+	c_tbody.append("td").text(find_set[0].name);
+    }
+    else
+    {
+	for (j = 0; j < find_set_sz; ++j)
+	{
+	    if ((find_set[j].idx_id & curr_idx) != 0)
+	    {
+		c_tbody.append("td").text(find_set[j].name);
+	    }
+	}
 	
-        d3.tsv(tsvFile,
-        function(d) {
-          return {
-            table: +d.table,
-            query: +d.query,
-            scanstep: +d.scanstep
-          };
-        },
-        function(error, data) {
-          var colorScale = d3.scale.quantile()
-              .domain([0, buckets - 1, d3.max(data, function (d) { return d.scanstep; })])
-              .range(colors);
+	
+	for (j = 0; j < find_set_sz; ++j)
+	{
+	    var tmp1 = find_set[j].idx_id / 4294967296;
+	    var tmp2 = curr_idx / 4294967296;
+	    if ((tmp1 & tmp2) != 0)
+	    {
+		c_tbody.append("td").text(find_set[j].name);
+	    }
+	}
+    }
+    //------------------------------
 
-          var cards = svg.selectAll(".query")
-              .data(data, function(d) {return d.table+':'+d.query;});
+    var colorScale = d3.scale.threshold()
+    	    .domain([0, 150, 300, 450, 600, 750, 900, 1050, 1200])
+    	    .range([0].concat(colors));
+    
+    var legend = svg.selectAll(".legend")
+            .data(colorScale.domain(), function(d) { return d; });
 
-          cards.append("title");
+    legend.enter().append("g")
+        .attr("class", "legend");
 
-          cards.enter().append("rect")
-              .attr("x", function(d) { return (d.query - 1) * gridSize; })
-              .attr("y", function(d) { return (d.table - 1) * gridSize; })
-              .attr("rx", 4)
-              .attr("ry", 4)
-              .attr("class", "query bordered")
-              .attr("width", gridSize)
-              .attr("height", gridSize)
-              .style("fill", colors[0])
-              .attr("transform", "translate(" + X_OFFSET + ", " + Y_OFFSET + ")");
+    legend.append("rect")
+        .attr("x", function(d, i) { return legendElementWidth * i; })
+        .attr("y", height)
+        .attr("width", legendElementWidth)
+        .attr("height", gridSize / 2)
+        .style("fill", function(d, i) { return colors[i]; });
 
-          cards.transition().duration(1000)
-              .style("fill", function(d) { return colorScale(d.scanstep); });
+    legend.append("text")
+        .attr("class", "mono")
+        .text(function(d) { return "≥ " + Math.round(d); })
+        .attr("x", function(d, i) { return legendElementWidth * i; })
+        .attr("y", height + gridSize);
 
-          cards.select("title").text(function(d) { return d.scanstep; });
-          
-          //-----------------------------
-          cards.on("click", function(d) {cardClicked(d, curr_idx); });
-          //-----------------------------
-          
-          cards.exit().remove();
-          
-          //------------------------------
-          var curr_idx_tab = d3.select("#current_idx");
-          var c_thead = curr_idx_tab.selectAll("thead");
-	  var c_tbody = curr_idx_tab.selectAll("tbody");
-	  c_thead.selectAll("tr").remove();
-	  c_tbody.selectAll("td").remove();
-
-	  c_thead = curr_idx_tab.append("thead");
-	  c_tbody = curr_idx_tab.append("tbody");
-	  c_thead.append("tr")
-		     .append("th")
-		     .text("Current Index");
-	  
-	  console.log(curr_idx);
-	  console.log(find_set[2].idx_id);
-	  console.log(find_set[2].idx_id & curr_idx);
-	  if (curr_idx == 0)
-	  {
-	  	c_tbody.append("td").text(find_set[0].name);
-	  }
-	  else
-	  {
-		  for (j = 0; j < find_set_sz; ++j)
-		  {
-		  	if ((find_set[j].idx_id & curr_idx) != 0)
-		  	{
-		  		 c_tbody.append("td").text(find_set[j].name);
-		  	}
-		  }
-		  
-		  
-		  for (j = 0; j < find_set_sz; ++j)
-		  {
-		  	var tmp1 = find_set[j].idx_id / 4294967296;
-		  	var tmp2 = curr_idx / 4294967296;
-		  	if ((tmp1 & tmp2) != 0)
-		  	{
-		  		 c_tbody.append("td").text(find_set[j].name);
-		  	}
-		  }
-	  }
-          //------------------------------
-
-	  var colorScale = d3.scale.threshold()
-    		.domain([0, 150, 300, 450, 600, 750, 900, 1050, 1200])
-    		.range([0].concat(colors));
-    		
-          var legend = svg.selectAll(".legend")
-              .data(colorScale.domain(), function(d) { return d; });
-
-          legend.enter().append("g")
-              .attr("class", "legend");
-
-          legend.append("rect")
-            .attr("x", function(d, i) { return legendElementWidth * i; })
-            .attr("y", height)
-            .attr("width", legendElementWidth)
-            .attr("height", gridSize / 2)
-            .style("fill", function(d, i) { return colors[i]; });
-
-          legend.append("text")
-            .attr("class", "mono")
-            .text(function(d) { return "≥ " + Math.round(d); })
-            .attr("x", function(d, i) { return legendElementWidth * i; })
-            .attr("y", height + gridSize);
-
-          legend.exit().remove();
-
-        });  
+    legend.exit().remove();
         
-        
-        
-      }
+}
 
 
 function draw_one_state(map_idx)
 {
-	var tsvFile = datasets[map_idx];
-	
-	console.log(map_idx);
-        d3.tsv(tsvFile,
-        function(d) {
-          return {
-            table: +d.table,
-            query: +d.query,
-            scanstep: +d.scanstep
-          };
-        },
-        function(error, data) {
-        	var min_value = d3.min(data, function (d) { 
-         						var tmp; 
-         						if (d.scanstep >= 0)
-         							tmp = Math.log(Math.abs(d.scanstep) + 1);
-         						else  
-         							tmp = -Math.log(Math.abs(d.scanstep) + 1);
-         						
-         						console.log(tmp);
-         						return tmp;
-         					   });
-         	var max_value = d3.max(data, function (d) { 
-         						var tmp;
-         						if (d.scanstep >= 0)
-         							tmp = Math.log(Math.abs(d.scanstep) + 1);
-         						else  
-         							tmp = -Math.log(Math.abs(d.scanstep) + 1);
-         						
-         						console.log(tmp);
-         						return tmp;
-         					   });
-        var colorScale = d3.scale.linear().domain([0, max_value]).range(["white", "blue"]);
-          //var colorScale = d3.scale.quantile()
-           //   .domain([0, buckets - 1, d3.max(data, function (d) { return d.scanstep; })])
-            //  .range(colors);
+    var tsvFile = datasets[map_idx];
 
-	var svg = d3.select("#heatmap").append("svg")
-          .attr("width", width + margin.left + margin.right)
-          .attr("height", height + margin.top + margin.bottom)
-          .append("g")
-          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-          
-          var cards = svg.selectAll(".query")
-              .data(data, function(d) {return d.table+':'+d.query;});
-
-          cards.append("title");
-
-          cards.enter().append("rect")
-              .attr("x", function(d) { return (d.query - 1) * gridSize; })
-              .attr("y", function(d) { return (d.table - 1) * gridSize; })
-              .attr("rx", 4)
-              .attr("ry", 4)
-              .attr("class", "query bordered")
-              .attr("width", gridSize)
-              .attr("height", gridSize)
-              .style("fill", colors[0])
-              .attr("transform", "translate(" + X_OFFSET + ", " + Y_OFFSET + ")");
-
-          cards.transition().duration(1000)
-              .style("fill", function(d) { 
-         						var tmp;
-         						if (d.scanstep >= 0)
-         							tmp = Math.log(Math.abs(d.scanstep) + 1);
-         						else  
-         							tmp = -Math.log(Math.abs(d.scanstep) + 1);
-         						
-         						//console.log(tmp);
-         						return colorScale(tmp);
-         				 });
-
-          cards.select("title").text(function(d) { return d.scanstep; });
-          
-          //-----------------------------
-          //cards.on("click", function(d) {cardClicked(d, curr_idx); });
-          //-----------------------------
-          
-          cards.exit().remove();
-          
-          //------------------------------
-          //%%%%%%%%%%%%%%%%%%remove temporarily for width begin%%%%%%%%%%%%%%%%%%%%%
-          /*var curr_idx_tab = d3.select("#current_idx");
-          var c_thead = curr_idx_tab.selectAll("thead");
-	  var c_tbody = curr_idx_tab.selectAll("tbody");
-	  var curr_idx = datasets_idx_map[map_idx][0];
-	  //c_thead.selectAll("tr").remove();
-	  //c_tbody.selectAll("td").remove();
-
-	  c_thead = curr_idx_tab.append("thead");
-	  c_tbody = curr_idx_tab.append("tbody");
-	  c_thead.append("tr")
-		     .append("th")
-		     .text("Current Index");
-	  
-	  console.log(curr_idx);
-	  //console.log(find_set[40].idx_id);
-	  //console.log(find_set[4].idx_id & curr_idx);
-	  if (curr_idx == 0)
-	  {
-	  	c_tbody.append("td").text(find_set[0].name);
-	  }
-	  else
-	  {
-		  for (j = 0; j < find_set_sz; ++j)
-		  {
-		  	if ((find_set[j].idx_id & curr_idx) != 0)
-		  	{
-		  		 c_tbody.append("td").text(find_set[j].name);
-		  	}
-		  }
-		  
-		  
-		  for (j = 0; j < find_set_sz; ++j)
-		  {
-		  	var tmp1 = find_set[j].idx_id / 4294967296;
-		  	var tmp2 = curr_idx / 4294967296;
-		  	if ((tmp1 & tmp2) != 0)
-		  	{
-		  		 c_tbody.append("td").text(find_set[j].name);
-		  	}
-		  }
-	  }*/
-	  //%%%%%%%%%%%%%%%%%%remove temporarily for width end%%%%%%%%%%%%%%%%%%%%%
-         /* //------------------------------
-
-	  var colorScale = d3.scale.threshold()
-    		.domain([0, 150, 300, 450, 600, 750, 900, 1050, 1200])
-    		.range([0].concat(colors));
-    		
-          var legend = svg.selectAll(".legend")
-              .data(colorScale.domain(), function(d) { return d; });
-
-          legend.enter().append("g")
-              .attr("class", "legend");
-
-          legend.append("rect")
-            .attr("x", function(d, i) { return legendElementWidth * i; })
-            .attr("y", height)
-            .attr("width", legendElementWidth)
-            .attr("height", gridSize / 2)
-            .style("fill", function(d, i) { return colors[i]; });
-
-          legend.append("text")
-            .attr("class", "mono")
-            .text(function(d) { return "≥ " + Math.round(d); })
-            .attr("x", function(d, i) { return legendElementWidth * i; })
-            .attr("y", height + gridSize);
-
-          legend.exit().remove();*/
-
-        });  
+    var data = datasets_table[tsvFile];
+    var min_value = d3.min(data, function (d) { 
+        var tmp; 
+        if (d.scanstep >= 0)
+            tmp = Math.log(Math.abs(d.scanstep) + 1);
+        else  
+            tmp = -Math.log(Math.abs(d.scanstep) + 1);
         
+        // console.log(tmp);
+        return tmp;
+    });
+    var max_value = d3.max(data, function (d) { 
+        var tmp;
+        if (d.scanstep >= 0)
+            tmp = Math.log(Math.abs(d.scanstep) + 1);
+        else  
+            tmp = -Math.log(Math.abs(d.scanstep) + 1);
+        
+        // console.log(tmp);
+        return tmp;
+    });
+
+    var colorScale = d3.scale.linear().domain([0, max_value]).range(["white", "blue"]);
+
+    var svg = d3.select("#heatmap").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+          
+    var cards = svg.selectAll(".query")
+            .data(data, function(d) {return d.table+':'+d.query;});
+
+    cards.append("title");
+
+    cards.enter().append("rect")
+        .attr("x", function(d) { return (d.query - 1) * gridSize; })
+        .attr("y", function(d) { return (d.table - 1) * gridSize; })
+        .attr("rx", 4)
+        .attr("ry", 4)
+        .attr("class", "query bordered")
+        .attr("width", gridSize)
+        .attr("height", gridSize)
+        .style("fill", colors[0])
+        .attr("transform", "translate(" + X_OFFSET + ", " + Y_OFFSET + ")");
+
+    cards.transition().duration(1000)
+        .style("fill", function(d) { 
+            var tmp;
+            if (d.scanstep >= 0)
+         	tmp = Math.log(Math.abs(d.scanstep) + 1);
+            else  
+         	tmp = -Math.log(Math.abs(d.scanstep) + 1);
+            
+            //console.log(tmp);
+            return colorScale(tmp);
+        });
+
+    cards.select("title").text(function(d) { return d.scanstep; });
+    
+    cards.exit().remove();
 }
 
 function draw_states(to_map_idx)
@@ -621,8 +519,8 @@ function draw_states(to_map_idx)
 	var i;
 	for (i = 0; i <= to_map_idx; ++i)
 	{
-		console.log(to_map_idx);
-		console.log(i);
+		// console.log(to_map_idx);
+		// console.log(i);
 		draw_one_state(i);
 	}
 }
@@ -636,195 +534,152 @@ function highlight_clicked_card_from_compare(entry)
 	var heatmap_tab = d3.select("#heatmap");
 	heatmap_tab.selectAll("svg").remove();
 	
-	read_standard(52); 
-      	draw_compare_states(52, entry.table, entry.query);
+	read_standard(INDEX_AVG); 
+      	draw_compare_states(DATASETS_SZ - 1, entry.table, entry.query);
 }
 
 
 
 function read_standard(map_idx_standard)
 {
-	var tsvFile_standard = datasets[map_idx_standard];
-	
-	d3.tsv(tsvFile_standard,
-        function(d) {
-          return {
-            table: +d.table,
-            query: +d.query,
-            scanstep: +d.scanstep
-          };
-        },
-        function(data) {
-          data.forEach(function(d){
-            sum_arrays[d.table][d.query] = d.scanstep;
-            //console.log(d);
-          });
-          
-        });
+    var tsvFile_standard = datasets[map_idx_standard];
+    var data = datasets_table[tsvFile_standard];
+    data.forEach(function(d){
+        sum_arrays[d.table][d.query] = d.scanstep;
+    });
 }
 
 function draw_one_compare_state(map_idx_obj, highlight_table, highlight_query)
 {
-	//read dataset[map_idx_standard]
-	/*var tsvFile_standard = datasets[map_idx_standard];
-	
-	d3.tsv(tsvFile_standard,
-        function(d) {
-          return {
-            table: +d.table,
-            query: +d.query,
-            scanstep: +d.scanstep
-          };
-        },
-        function(data) {
-          data.forEach(function(d){
-            sum_arrays[d.table][d.query] = d.scanstep;
-            console.log(d);
-          });
-          
-        });*/
-	
-	
-	var tsvFile = datasets[map_idx_obj];
-	console.log(tsvFile);
-	
-        d3.tsv(tsvFile,
-        function(d) {
-          return {
-            table: +d.table,
-            query: +d.query,
-            scanstep: +(d.scanstep-sum_arrays[d.table][d.query])
-          };
-        },
-        function(error, data) {
-        	var min_value = d3.min(data, function (d) { 
-         						var tmp; 
-         						if (d.scanstep >= 0)
-         							tmp = Math.log(Math.abs(d.scanstep) + 1);
-         						else  
-         							tmp = -Math.log(Math.abs(d.scanstep) + 1);
-         						
-         						console.log(tmp);
-         						return tmp;
-         					   });
-         	var max_value = d3.max(data, function (d) { 
-         						var tmp;
-         						if (d.scanstep >= 0)
-         							tmp = Math.log(Math.abs(d.scanstep) + 1);
-         						else  
-         							tmp = -Math.log(Math.abs(d.scanstep) + 1);
-         						
-         						console.log(tmp);
-         						return tmp;
-         					   });
-          //var min_value = d3.min(data, function (d) { console.log(d); return d.scanstep; });
-          //var max_value = d3.max(data, function (d) { console.log(d); return d.scanstep/* - sum_arrays[d.table][d.query]*/; });
-          //var colorScale = d3.scale.quantile()
-              //.domain([0, buckets - 1, d3.max(data, function (d) { console.log(d); return d.scanstep/* - sum_arrays[d.table][d.query]*/; })])
-              //.range(colors);
-          var colorScale = d3.scale.linear().domain([min_value, 0, max_value]).range(["red", "white", "blue"]);
+    var tsvFile = datasets[map_idx_obj];
+    var data = datasets_table[tsvFile];
+    data.forEach(function(d) {
+	d.scanstep_difference = +(d.scanstep-sum_arrays[d.table][d.query]);
+    });
+    var min_value = d3.min(data, function (d) { 
+        var tmp; 
+        if (d.scanstep_difference >= 0)
+            tmp = Math.log(Math.abs(d.scanstep_difference) + 1);
+        else  
+            tmp = -Math.log(Math.abs(d.scanstep_difference) + 1);
+        return tmp;
+    });
+    var max_value = d3.max(data, function (d) { 
+        var tmp;
+        if (d.scanstep_difference >= 0)
+            tmp = Math.log(Math.abs(d.scanstep_difference) + 1);
+        else  
+            tmp = -Math.log(Math.abs(d.scanstep_difference) + 1);
+        return tmp;
+    });
+    var colorScale = d3.scale.linear().domain([min_value, 0, max_value]).range(["red", "white", "blue"]);
 
-	var heatmap = d3.select("#heatmap");
-	heatmap.append("tr").append("td").attr("width", 200).attr("height", 50).text(datasets[map_idx_obj]);
-	var svg = heatmap.append("svg")
-          .attr("width", width + margin.left + margin.right)
-          .attr("height", height + margin.top + margin.bottom)
-          .append("g")
-          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-          
-         
-          
-          var cards = svg.selectAll(".query")
-              .data(data, function(d) {return d.table+':'+d.query;});
+    var heatmap = d3.select("#heatmap");
+    heatmap.append("tr").append("td").attr("width", 200).attr("height", 50).text(datasets[map_idx_obj]);
+    var svg = heatmap.append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    
+    var cards = svg.selectAll(".query")
+            .data(data, function(d) {return d.table+':'+d.query;});
 
-          cards.append("title");
+    cards.append("title");
 
-	cards.enter().append("rect")
-              .attr("x", function(d) { return (d.query - 1) * gridSize; })
-              .attr("y", function(d) { return (d.table - 1) * gridSize; })
-              .attr("rx", 4)
-              .attr("ry", 4)
-              .attr("class", "query bordered")
-              .attr("width", gridSize)
-              .attr("height", gridSize)
-              .style("fill", colors[0])
-              .style("stroke-width", function(d) { if (d.query == highlight_query && d.table == highlight_table) return 5;})
-              .style("stroke", function(d) { if (d.query == highlight_query && d.table == highlight_table) return "black";})
-              .attr("transform", "translate(" + X_OFFSET + ", " + Y_OFFSET + ")");	
-       
+    cards.enter().append("rect")
+        .attr("x", function(d) { return (d.query - 1) * gridSize; })
+        .attr("y", function(d) { return (d.table - 1) * gridSize; })
+        .attr("rx", 4)
+        .attr("ry", 4)
+        .attr("class", "query bordered")
+        .attr("width", gridSize)
+        .attr("height", gridSize)
+        .style("fill", colors[0])
+        .style("stroke-width", function(d) { if (d.query == highlight_query && d.table == highlight_table) return 5; else return null;})
+        .style("stroke", function(d) { if (d.query == highlight_query && d.table == highlight_table) return "black"; else return null;})
+        .attr("transform", "translate(" + X_OFFSET + ", " + Y_OFFSET + ")");	
+    
 
-          cards.transition().duration(1000)
-              .style("fill", function(d) { 
-         						var tmp;
-         						if (d.scanstep >= 0)
-         							tmp = Math.log(Math.abs(d.scanstep) + 1);
-         						else  
-         							tmp = -Math.log(Math.abs(d.scanstep) + 1);
-         						
-         						//console.log(tmp);
-         						return colorScale(tmp);
-         				 });
-              
-          
+    cards.transition().duration(1000)
+        .style("fill", function(d) { 
+            var tmp;
+            if (d.scanstep_difference >= 0)
+         	tmp = Math.log(Math.abs(d.scanstep_difference) + 1);
+            else  
+         	tmp = -Math.log(Math.abs(d.scanstep_difference) + 1);
+            return colorScale(tmp);
+        });
 
-          cards.select("title").text(function(d) { return d.scanstep; });
-          
-          cards.on("click", function(d) {highlight_clicked_card_from_compare(d); });
-          
-          cards.exit().remove();
-          
-
-        });  
+    cards.select("title").text(function(d) { return d.scanstep_difference; });
+    
+    cards.on("click", function(d) {highlight_clicked_card_from_compare(d); });
+    
+    cards.exit().remove();
 }
 
 
 function draw_compare_states(to_map_idx, highlight_table, highlight_query)
 {
 	var i;
-	for (i = 0; i <= to_map_idx; ++i)
+	for (i = 0; i < to_map_idx; ++i)
 	{
-		console.log(to_map_idx);
-		console.log(i);
+		// console.log(to_map_idx);
+		// console.log(i);
 		draw_one_compare_state(i, highlight_table, highlight_query);
 	}
 }
 
-      //heatmapChart(0, 0);	//proj_630 main
-      
-      
-      /*//single idx
-      //draw_one_state(3);	
-      //draw_states(41); 
-      read_standard(41); 
-      draw_compare_states(41);*/
-      
-      //double idx
-      read_standard(52); 
-      draw_compare_states(52, -1, -1);
+var datasets_table = {};
 
-      /*var datasetpicker = d3.selectAll(".dataset-button")
-        .data(datasets);
+function load_all_states(done)
+{
+    var loaded_so_far = 0;
+    for (var i=0; i<datasets.length; ++i) {
+	var name = datasets[i];
+	d3.tsv(name, function(d) {
+            return {
+		table: +d.table,
+		query: +d.query,
+		scanstep: +d.scanstep
+            };
+	}, (function (internalName) {
+	    return function(error, data) {
+		datasets_table[internalName] = data;
+		console.log("LOADED ", internalName);
+		loaded_so_far += 1;
+		if (loaded_so_far == datasets.length) {
+		    console.log("LOOP ENDED");
+		    done();
+		}
+	    };
+	})(name));
+    }
+}
 
-      datasetpicker.enter()
-        .append("input")
-        .attr("value", function(d){ return "Dataset " + d })
-        .attr("type", "button")
-        .attr("class", "dataset-button")
-        .on("click", function(d) {
-          heatmapChart(d);
-        });*/	  
-	
-	var button = ["Reset"];
-		  
-	var datasetpicker = d3.selectAll(".dataset-button").data(button).enter()
-        .append("input")
-        .attr("value", function(d){ return "Dataset " + d })
-        .attr("type", "button")
-        .attr("class", "dataset-button")
-        .on("click", function(d) {
-          heatmapChart(0, 0);
-        });	  
-		  
-		  
-		  
-		  
+d3.text("data/datasets.txt", function(error, data) {
+    if (error) {
+	alert("Error! " + error);
+        return;
+    }
+    datasets = data.trim().split("\n");
+    DATASETS_SZ = datasets.length;
+    INDEX_AVG = datasets.indexOf("idx_avg.tsv");
+    load_all_states(main);
+});
+
+function main() {
+    read_standard(INDEX_AVG); 
+    draw_compare_states(DATASETS_SZ - 1, -1, -1);
+    
+    var button = ["Reset"];
+    
+    var datasetpicker = d3.selectAll(".dataset-button").data(button).enter()
+            .append("input")
+            .attr("value", function(d){ return "Dataset " + d; })
+            .attr("type", "button")
+            .attr("class", "dataset-button")
+            .on("click", function(d) {
+                heatmapChart(0, 0);
+            });	  
+}
