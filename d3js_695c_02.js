@@ -129,11 +129,10 @@ function draw_compare_states(selection, highlight_table, highlight_query)
 {
     selection
         .enter()
-        /*.call(function(d){if (d % 4 == 0)
-        				console.log(d);
-        				d3.select(this).append("tr");
-        			    })
-        .append("td")*/
+        .call(function(d){if (d % 4 == 0)
+        			this.append("tr");
+        		 })
+        .append("td")
         .append("div").attr("style", "width:800px;")
         .each(function (map_idx_obj) {
             var heatmap = d3.select(this);
@@ -258,7 +257,7 @@ function main() {
         data.push(i);
     }
     var sel = d3.select("#heatmap")
-    	    //.append("table")
+    	    .append("table")
             .selectAll("div")
             .data(data);
     draw_compare_states(sel, -1, -1);
