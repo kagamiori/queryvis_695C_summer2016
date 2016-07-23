@@ -1,0 +1,9 @@
+number	text
+1	part
+2	supplier
+3	partsupp
+4	customer
+5	nation
+6	region
+7	lineitem
+8	orders

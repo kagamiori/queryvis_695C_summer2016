@@ -13,45 +13,31 @@
 	  stroke: #000;
 	  shape-rendering: crispEdges;
 	}
+	
+	path.link {
+	  fill: none;
+	  stroke: black;
+	}
+	
+	.tooltip {
+	  position: absolute;
+	  width: 200px;
+	  height: 28px;
+	  pointer-events: none;
+	}
     </style>
     <script src="d3.v3.js"></script>
+    <script src="d3.tip.v0.6.3.js"></script>
   </head>
   <body>
-    <table>
-      <tr>
-        <td width="800" height="750">
-          <div id="heatmap">
-          </div>
-        </td>
-        <td>
-          <table>
-            <tr>
-              <td width="480" height="180">
-              <div id="query_text">
-    	      </div>
-    	      </td>
-    	    </tr>
-    	    <tr>
-    	      <td width="480" height="100">
-    	      <div id="current_idx">
-    	      </div>
-    	      </td>
-    	    </tr>
-    	    <tr>
-    	      <td width="480" height="100">
-    	      <div id="columns_used">
-   	      </div>
-   	      </td>
-   	    </tr>
-   	    <tr>
-   	      <td width="480" height="100">
-    	      <div id="err_msg">
-    	      </div>
-    	      </td>
-    	    </tr>
-        </td>
-      </tr>
-    </table>
-  <script src="d3js_695c_02.js"></script>  
+    <div id="heatmap">
+    </div>
+    <div style="clear:both"></div>
+    <hr></hr>
+    <div id="detail">
+    </div>
+    <div id="tree">
+    </div>
+  <script src="d3js_695c_03.js"></script>  
   </body>
 </html>
