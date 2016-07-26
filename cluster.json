@@ -1,0 +1,642 @@
+{
+"name": "tmp",
+"children": [
+{
+"name": "tmp",
+"children": [
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_l_quantity.tsv"
+}
+,
+{
+"name": "idx_p_mfgr_l_quantity.tsv"
+}
+]
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_l_shipmode.tsv"
+}
+,
+{
+"name": "idx_p_mfgr_l_shipmode.tsv"
+}
+]
+}
+]
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_l_orderkey.tsv"
+}
+,
+{
+"name": "idx_p_partkey_l_orderkey.tsv"
+}
+]
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_l_shipdate.tsv"
+}
+,
+{
+"name": "idx_p_partkey_l_shipdate.tsv"
+}
+]
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "tmp",
+"children": [
+{
+"name": "tmp",
+"children": [
+{
+"name": "tmp",
+"children": [
+{
+"name": "tmp",
+"children": [
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_r_name.tsv"
+}
+,
+{
+"name": "idx_p_partkey_r_name.tsv"
+}
+]
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_ps_supplycost.tsv"
+}
+,
+{
+"name": "idx_p_mfgr_ps_supplycost.tsv"
+}
+]
+}
+]
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_ps_partkey.tsv"
+}
+,
+{
+"name": "idx_p_partkey_ps_partkey.tsv"
+}
+]
+}
+]
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_o_orderdate.tsv"
+}
+,
+{
+"name": "idx_p_partkey_o_orderpriority.tsv"
+}
+]
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_c_nationkey.tsv"
+}
+,
+{
+"name": "idx_p_mfgr_c_nationkey.tsv"
+}
+]
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_c_mktsegment.tsv"
+}
+,
+{
+"name": "idx_p_partkey_c_mktsegment.tsv"
+}
+]
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_l_suppkey.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_p_partkey.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_s_nationkey.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_l_linestatus.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_s_nationkey.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_n_nationkey.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_l_linestatus.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_n_nationkey.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_c_comment.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_n_regionkey.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_p_type.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_c_acctbal.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_l_suppkey.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_c_name.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_l_commitdate.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_l_discount.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_c_custkey.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_o_orderkey.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_n_name.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_c_comment.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_s_name.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_c_address.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_p_mfgr.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_l_discount.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_s_suppkey.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_c_phone.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_r_regionkey.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_p_size.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_c_custkey.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_l_commitdate.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_r_regionkey.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_s_name.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_o_shippriority.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_n_name.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_s_acctbal.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_c_acctbal.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_c_address.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_s_acctbal.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_ps_suppkey.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_p_type.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_c_phone.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_c_name.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_l_partkey.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_n_regionkey.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_s_suppkey.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_ps_suppkey.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_p_size.tsv"
+}
+,
+{
+"name": "idx_p_partkey_o_custkey.tsv"
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+,
+{
+"name": "idx_p_partkey_l_receiptdate.tsv"
+}
+]
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_partkey_l_returnflag.tsv"
+}
+,
+{
+"name": "tmp",
+"children": [
+{
+"name": "idx_p_mfgr_l_returnflag.tsv"
+}
+,
+{
+"name": "idx_p_mfgr_l_receiptdate.tsv"
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
+]
+}
